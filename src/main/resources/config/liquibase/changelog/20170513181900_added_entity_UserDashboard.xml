@@ -30,7 +30,7 @@
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-        
+
         <createTable tableName="user_dashboard_comp">
             <column name="comps_id" type="bigint">
                 <constraints nullable="false"/>
@@ -41,6 +41,9 @@
         </createTable>
 
         <addPrimaryKey columnNames="user_dashboards_id, comps_id" tableName="user_dashboard_comp"/>
-        
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/user_dashboard.csv"
+                  separator=";"
+                  tableName="user_dashboard"/>
     </changeSet>
 </databaseChangeLog>

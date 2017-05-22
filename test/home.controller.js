@@ -17,17 +17,14 @@
         //********************** ADDED
         vm.projects = [];
         vm.hasComp = null;
-        //test
         $(function () {
             $("#start_btn").on("click", function () {
-                $("#start_main").slideToggle(600);
+                $("#start_main").load("app/home/ccm.html");
             });
 
         });
-        //HOME - function to toggle projects on click
         $(function () {
-            $("#start_pjct").on("click", function (event) {
-                event.preventDefault();
+            $("#start_pjct").on("click", function () {
                 $("#section2").slideToggle(600,function(){
                     Project.query(function(result) {
                         vm.projects = result;
@@ -35,9 +32,9 @@
                 });
             });
 
-        });
+       });
 
-        //***********
+       //***********
         $scope.$on('authenticationSuccess', function() {
             getAccount();
         });

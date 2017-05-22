@@ -55,7 +55,7 @@
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-        
+
         <createTable tableName="project_needed_comp">
             <column name="needed_comps_id" type="bigint">
                 <constraints nullable="false"/>
@@ -66,6 +66,10 @@
         </createTable>
 
         <addPrimaryKey columnNames="projects_id, needed_comps_id" tableName="project_needed_comp"/>
-        
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/project.csv"
+                  separator=";"
+                  tableName="project"/>
+
     </changeSet>
 </databaseChangeLog>

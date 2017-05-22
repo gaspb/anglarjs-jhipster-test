@@ -146,6 +146,21 @@ public class ProjectResource {
         HttpHeaders headers = PaginationUtil.generateSearchPaginationHttpHeaders(query, page, "/api/_search/projects");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
-
+//added
+    /**
+     * GET  /projects/my : get all the projects from current user.
+     *
+     * @param pageable the pagination information
+     * @return the ResponseEntity with status 200 (OK) and the list of projects in body
+     */
+    @GetMapping("/projects/my")
+    @Timed
+    public ResponseEntity<List<ProjectDTO>> getAllProjectsByUser(@ApiParam Pageable pageable) {
+        log.debug("REST request to get a page of Projects");
+        // ******Page<ProjectDTO> page = projectService.findAll(pageable);
+        Page<ProjectDTO> page = projectService.findByCurrentUser(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/projects");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
 
 }

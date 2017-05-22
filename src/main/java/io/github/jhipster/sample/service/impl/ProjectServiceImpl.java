@@ -71,10 +71,23 @@ public class ProjectServiceImpl implements ProjectService{
     public Page<ProjectDTO> findAll(Pageable pageable) { //BY_AUTHOR
         log.debug("Request to get all Projects");
 
+        Page<Project> result = projectRepository.findAll( pageable);
+        return result.map(project -> projectMapper.toDto(project));
+    }
+    /**
+     *  Get all the projects from user.
+     *
+     *  @param pageable the pagination information
+     *  @return the list of entities
+     */
+    @Override
+    @Transactional(readOnly = true)
+    public Page<ProjectDTO> findByCurrentUser(Pageable pageable) { //BY_AUTHOR
+        log.debug("Request to get all Projects");
+
         Page<Project> result = projectRepository.findByAuthorId(userService.getUserWithAuthorities().getId(), pageable);
         return result.map(project -> projectMapper.toDto(project));
     }
-
     /**
      *  Get one project by id.
      *

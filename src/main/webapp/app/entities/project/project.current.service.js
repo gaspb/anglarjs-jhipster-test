@@ -3,12 +3,12 @@
 
     angular
         .module('jhipsterElasticsearchSampleApplicationApp')
-        .factory('ProjectSearch', ProjectSearch);
+        .factory('ProjectCurrent', ProjectCurrent);
 
-    ProjectSearch.$inject = ['$resource'];
+    ProjectCurrent.$inject = ['$resource'];
 
-    function ProjectSearch($resource) {
-        var resourceUrl =  'api/_search/projects/:title';
+    function ProjectCurrent($resource) {
+        var resourceUrl =  'api/projects/my/:title';
 
         return $resource(resourceUrl, {}, {
             'query': { method: 'GET', isArray: true}

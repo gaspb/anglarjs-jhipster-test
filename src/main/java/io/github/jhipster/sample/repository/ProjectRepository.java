@@ -23,6 +23,7 @@ public interface ProjectRepository extends JpaRepository<Project,Long> {
 
 
     Page<Project> findByAuthorId(Long id, Pageable pageable);
+    Page<Project> findAll(Pageable pageable);
 
 
 }

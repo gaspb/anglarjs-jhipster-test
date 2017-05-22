@@ -28,6 +28,9 @@
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/comp_domain.csv"
+                  separator=";"
+                  tableName="comp_domain"/>
     </changeSet>
 </databaseChangeLog>

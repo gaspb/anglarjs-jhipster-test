@@ -5,12 +5,11 @@
         .module('jhipsterElasticsearchSampleApplicationApp')
         .controller('ProjectController', ProjectController);
 
-    ProjectController.$inject = ['DataUtils', 'Project', 'ProjectSearch', 'ParseLinks', 'AlertService', 'paginationConstants'];
+    ProjectController.$inject = ['DataUtils', 'Project', 'ProjectSearch', 'ProjectCurrent', 'ParseLinks', 'AlertService', 'paginationConstants','$state'];
 
-    function ProjectController( DataUtils, Project, ProjectSearch, ParseLinks, AlertService, paginationConstants) {
+    function ProjectController( DataUtils, Project, ProjectSearch, ProjectCurrent, ParseLinks, AlertService, paginationConstants, $state) {
 
         var vm = this;
-vm.account=null;
         vm.projects = [];
         vm.loadPage = loadPage;
         vm.itemsPerPage = paginationConstants.itemsPerPage;
@@ -37,13 +36,20 @@ vm.account=null;
                     size: vm.itemsPerPage,
                     sort: sort()
                 }, onSuccess, onError);
-            } else {
-                Project.query({
+                 } else if ($state.includes('project') ) {
+
+                ProjectCurrent.query({
                     page: vm.page,
                     size: vm.itemsPerPage,
                     sort: sort()
                 }, onSuccess, onError);
-            }
+               } else {
+            Project.query({
+                page: vm.page,
+                size: vm.itemsPerPage,
+                sort: sort()
+            }, onSuccess, onError);
+        }
             function sort() {
                 var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];
                 if (vm.predicate !== 'id') {

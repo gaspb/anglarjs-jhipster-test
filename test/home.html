@@ -5,14 +5,19 @@
             <span class="hipster img-responsive img-rounded"></span>
         </div>
         <div class="col-md-8">
-            <h1>Bienvenue sur l'Incubateur Insoumis<span ng-show="vm.isAuthenticated()">, {{vm.account.login}}</span> !</h1>
+            <h1 data-translate="home.title">Welcome, Java Hipster!</h1>
             <p class="lead" data-translate="home.subtitle">This is your homepage</p>
 
             <div ng-switch="vm.isAuthenticated()">
                 <!-- IF USER IS CONNECTED -->
+                <div class="alert alert-success" ng-switch-when="true" data-translate="home.logged.message" translate-values="{username: '{{vm.account.login}}'}">
+                   THIS IS A TEST You are logged in as user "{{vm.account.login}}".
+                </div>
                 <div class="" ng-switch-when="true" has-authority="ROLE_USER" ui-sref-active="active">
-                    Vos compétences <br/>
-                    Recherchez des projets ! <br/>
+                    <a href="#" class="btn btn-primary btn-md btn-block" role="button" ui-sref="register">  </a>
+                </div>
+                <div class="" ng-switch-when="true" has-authority="ROLE_USER" ui-sref-active="active">
+                    Renseignez vos  <a  href="" ui-sref="competence">compétences !</a> <br/>
                     Recherchez des projets ! <br/>
                     Démarrez un projet ! <br/>
                     Suggérez une idée !
@@ -28,16 +33,15 @@
 
             </div>
             <p>
-                <button class="btn btn-primary" type="button" id="start_btn" >
+                <button class="btn btn-primary" type="button" id="start_btn">
                     Comment ça marche ??
                 </button>
             </p>
 
-            <div id="start_main" style="margin: 40px; display: none;">
-                L'incubateur repose sur 3 entités : les projets, les idées et les compétences.<br>
-                 - Chaque utilisateur renseigne ses compétences à l'inscription.<br>
-                 - Lui est alors communiquée la liste des projets et idées nécessitant une ou plusieurs de ces compétences.<br>
-                 - Libre à vous ensuite de participer à ces projets, de lancer les vôtres si vous avez toute ou partie des compétences requises ou de proposer vos idées.
+
+
+            <div id="start_main">
+Main
             </div>
             <p data-translate="home.question">
                 If you have any question on JHipster:
@@ -54,25 +58,26 @@
 
         </div>
         <!-- SECTION 2 - PROJETS -->
-
+        <div ng-switch="vm.isAuthenticated()" >
             <p>
-                <button class="btn btn-primary center-block" type="button" id="start_pjct" ng-show="vm.isAuthenticated()" >
+                <button class="btn btn-primary center-block" type="button" id="start_pjct" ng-switch-when="true" has-authority="ROLE_USER">
                     Découvrir les projets
                 </button>
-
             </p>
-        <div ng-switch="vm.isAuthenticated()"   >
-            <div id="section2" ng-switch-when="true" style="margin: 40px; display: none;">
+            <div id="section2" ng-switch-when="true" has-authority="ROLE_USER" style="margin: 40px; display: none;">
                 <h2 data-translate="jhipsterElasticsearchSampleApplicationApp.project.home.title">Projects</h2>
                 <jhi-alert></jhi-alert>
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-xs-6 col-md-4">
+                        <div class="col-xs-4 no-padding-left">
                             <button class="btn btn-primary" ui-sref="project.new" >
                                 <span class="glyphicon glyphicon-plus"></span>
+                                <span class="hidden-xs-down"  data-translate="jhipsterElasticsearchSampleApplicationApp.project.home.createLabel">
+                        Create new Project
+                    </span>
                             </button>
                         </div>
-                        <div class="col-xs-6 col-md-4">
+                        <div class="col-xs-8 no-padding-right">
                             <form name="searchForm" class="form-inline">
                                 <div class="input-group pull-right" >
                                     <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'jhipsterElasticsearchSampleApplicationApp.project.home.search' | translate }}">
@@ -107,7 +112,7 @@
                             <th></th>
                         </tr>
                         </thead>
-                        <tbody >
+                        <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
                         <tr ng-repeat="project in vm.projects track by project.id">
                             <td><a ui-sref="project-detail({id:project.id})">{{project.id}}</a></td>
                             <td>{{project.title}}</td>
