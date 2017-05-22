@@ -1,0 +1,23 @@
+{
+    "jhipsterElasticsearchSampleApplicationApp": {
+        "competence" : {
+            "home": {
+                "title": "Compétences",
+                "createLabel": "Ajouter une Compétence",
+                "createOrEditLabel": "Créer ou éditer une Compétence",
+                "search": "Recherche pour Competence"
+            },
+            "created": "Un nouveau Competence a été créé avec l'identifiant {{ param }}",
+            "updated": "La Compétence avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "La Compétence avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer la Compétence {{ name }} ?"
+            },
+            "detail": {
+                "title": "Compétence"
+            },
+            "name": "Name",
+            "domain": "Domaine"
+        }
+    }
+}

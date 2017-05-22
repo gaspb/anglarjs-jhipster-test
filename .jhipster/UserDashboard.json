@@ -1,0 +1,44 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "userDashboard"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "projectList",
+            "otherEntityName": "project",
+            "otherEntityRelationshipName": "author"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "suggestionList",
+            "otherEntityName": "suggestion",
+            "otherEntityRelationshipName": "author"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "comp",
+            "otherEntityName": "competence",
+            "otherEntityField": "name",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "phone",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170513181900",
+    "entityTableName": "user_dashboard",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl"
+}

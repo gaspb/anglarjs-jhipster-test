@@ -1,0 +1,68 @@
+<div ng-cloak>
+    <div class="row">
+
+        <div class="col-md-4">
+            <span class="hipster img-responsive img-rounded"></span>
+        </div>
+        <div class="col-md-8">
+            <h1 data-translate="home.title">Welcome, Java Hipster!</h1>
+            <p class="lead" data-translate="home.subtitle">This is your homepage</p>
+
+            <div ng-switch="vm.isAuthenticated()">
+                <!-- IF USER IS CONNECTED -->
+                <div class="alert alert-success" ng-switch-when="true" data-translate="home.logged.message" translate-values="{username: '{{vm.account.login}}'}">
+                   THIS IS A TEST You are logged in as user "{{vm.account.login}}".
+                </div>
+                <div class="" ng-switch-when="true" has-authority="ROLE_USER" ui-sref-active="active">
+                    <a href="#" class="btn btn-primary btn-md btn-block" role="button" ui-sref="register">  </a>
+                </div>
+                <div class="" ng-switch-when="true" has-authority="ROLE_USER" ui-sref-active="active">
+                    Renseignez vos  <a  href="" ui-sref="competence">compétences !</a> <br/>
+                    Recherchez des projets ! <br/>
+                    Démarrez un projet ! <br/>
+                    Suggérez une idée !
+                </div>
+
+                <!-- ELSE -->
+                <p class="well center-block" style="max-width:400px" ng-switch-when="false">
+                    <a href="#" class="btn btn-primary btn-md btn-block" role="button" ui-sref="register"> COMMENCER </a>
+                </p>
+                <div class="alert alert-warning center-block" ng-switch-when="false" data-translate="global.messages.info.authenticated" translate-compile>
+                    Vous avez déjà un compte ? <a class="alert-link" href="" ng-click="vm.login()">Connectez-Vous !</a>
+                </div>
+
+            </div>
+            <p>
+                <button class="btn btn-primary" type="button" id="start_btn">
+                    Comment ça marche ??
+                </button>
+            </p>
+
+
+
+            <div id="start_main">
+Main
+            </div>
+            <p data-translate="home.question">
+                If you have any question on JHipster:
+            </p>
+
+            <ul>
+                <li><a href="https://laec.fr/" target="_blank" data-translate="home.link.laec">LAEC.fr</a></li>
+                <li><a href="https://lafranceinsoumise.fr/" target="_blank" data-translate="home.link.fi">JHipster on Stack Overflow</a></li>
+                <li><a href="//discord.insoumis.online" target="_blank" data-translate="home.link.discord">JHipster bug tracker</a></li>
+                <li><a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" data-translate="home.link.facebook">JHipster public chat room</a></li>
+                <li><a href="//insoumis.online" target="_blank"  data-translate="home.link.online">follow @java_hipster on Twitter</a></li>
+            </ul>
+
+            <p>
+             <span data-translate="home.like">If you like JHipster, don't forget to give us a star on </span>&nbsp;<a href="https://github.com/jhipster/generator-jhipster" target="_blank" data-translate="home.github">Github</a>!
+            </p>
+        </div>
+        <div class="col-md-6" has-authority="ROLE_USER" ui-sref-active="active">
+            <button class="btn btn-primary btn-md btn-block"  id="projectload_btn"> Consulter les projets  </button>
+        </div>
+        <div id="project_main"></div>
+    </div>
+</div>
+

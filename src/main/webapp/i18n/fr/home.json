@@ -1,0 +1,19 @@
+{
+    "home": {
+        "title": "Bienvenue sur l'Incubateur Insoumis !",
+        "subtitle": "Ce site permet aux insoumis de mettre leurs compétences au service de la communauté insoumise, de proposer des idées et de lancer des projets avec l'aide des insoumis possédant les compétences qui vous manquent.",
+        "logged": {
+            "message": "Vous êtes connecté en tant que \"{{username}}\"."
+        },
+        "question": "Vous voulez en savoir plus sur la France insoumise ?",
+        "link": {
+            "laec": "Le programme L'Avenir En Commun",
+            "fi": "Le site de la France Insoumise",
+            "discord": "Venez discuter sur le Discord Insoumis",
+            "facebook": "Suivez l'actualité de la FI sur facebook",
+            "online": "La plateforme des outils Insoumis sur internet"
+        },
+        "like": "Ce site a été crée par des bénévoles insoumis avec l'aide du générateur JHipster. Retrouvez-les sur",
+        "github": "GitHub "
+    }
+}

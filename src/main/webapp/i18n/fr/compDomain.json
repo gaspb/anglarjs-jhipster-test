@@ -1,0 +1,24 @@
+{
+    "jhipsterElasticsearchSampleApplicationApp": {
+        "compDomain" : {
+            "home": {
+                "title": "CompDomains",
+                "createLabel": "Créer un nouveau Comp Domain",
+                "createOrEditLabel": "Créer ou éditer un Comp Domain",
+                "search": "Recherche pour Comp Domain"
+            },
+            "created": "Un nouveau Comp Domain a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Comp Domain avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Comp Domain avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Comp Domain {{ id }} ?"
+            },
+            "detail": {
+                "title": "Comp Domain"
+            },
+            "name": "Name",
+            "competence": "Competence",
+            "project": "Project"
+        }
+    }
+}

@@ -1,0 +1,42 @@
+
+<div>
+    <h2><span data-translate="jhipsterElasticsearchSampleApplicationApp.suggestion.detail.title">Suggestion</span> {{vm.suggestion.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="jhipsterElasticsearchSampleApplicationApp.suggestion.title">Title</span></dt>
+        <dd>
+            <span>{{vm.suggestion.title}}</span>
+        </dd>
+        <dt><span data-translate="jhipsterElasticsearchSampleApplicationApp.suggestion.description">Description</span></dt>
+        <dd>
+            <span>{{vm.suggestion.description}}</span>
+        </dd>
+        <dt><span data-translate="jhipsterElasticsearchSampleApplicationApp.suggestion.image">Image</span></dt>
+        <dd>
+            <div ng-if="vm.suggestion.image">
+                <a ng-click="vm.openFile(vm.suggestion.imageContentType, vm.suggestion.image)" data-translate="entity.action.open">open</a>
+                {{vm.suggestion.imageContentType}}, {{vm.byteSize(vm.suggestion.image)}}
+            </div>
+        </dd>
+        <dt><span data-translate="jhipsterElasticsearchSampleApplicationApp.suggestion.creationDate">Creation Date</span></dt>
+        <dd>
+            <span>{{vm.suggestion.creationDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="jhipsterElasticsearchSampleApplicationApp.suggestion.author">Author</span></dt>
+        <dd>
+            <a ui-sref="user-dashboard-detail({id:vm.suggestion.authorId})">{{vm.suggestion.authorUser}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="suggestion-detail.edit({id:vm.suggestion.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

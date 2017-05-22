@@ -1,0 +1,26 @@
+{
+    "jhipsterElasticsearchSampleApplicationApp": {
+        "userDashboard" : {
+            "home": {
+                "title": "UserDashboards",
+                "createLabel": "Créer un nouveau User Dashboard",
+                "createOrEditLabel": "Créer ou éditer un User Dashboard",
+                "search": "Recherche pour User Dashboard"
+            },
+            "created": "Un nouveau User Dashboard a été créé avec l'identifiant {{ param }}",
+            "updated": "Le User Dashboard avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le User Dashboard avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le User Dashboard {{ id }} ?"
+            },
+            "detail": {
+                "title": "User Dashboard"
+            },
+            "phone": "Phone",
+            "user": "User",
+            "projectList": "Project List",
+            "suggestionList": "Suggestion List",
+            "comp": "Comp"
+        }
+    }
+}

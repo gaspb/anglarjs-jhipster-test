@@ -1,0 +1,29 @@
+{
+    "jhipsterElasticsearchSampleApplicationApp": {
+        "project" : {
+            "home": {
+                "title": "Projects",
+                "createLabel": "Créer un nouveau Projet",
+                "createOrEditLabel": "Créer ou éditer un Projet",
+                "search": "Recherche pour Project"
+            },
+            "created": "Un nouveau Projet a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Projet avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Projet avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Projet {{ title }} ?"
+            },
+            "detail": {
+                "title": "Projet"
+            },
+            "title": "Title",
+            "description": "Description",
+            "image": "Image",
+            "creationDate": "Creation Date",
+            "completionDate": "Completion Date",
+            "neededComp": "Compétence demandée",
+            "domain": "Domaine",
+            "author": "Auteur"
+        }
+    }
+}

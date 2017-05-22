@@ -1,0 +1,64 @@
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#field_comp').multiselect();
+    });
+</script>
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myUserDashboardLabel" data-translate="jhipsterElasticsearchSampleApplicationApp.userDashboard.home.createOrEditLabel">Create or edit a User Dashboard</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.userDashboard.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.userDashboard.id" readonly />
+        </div>
+        <div class="form-group" ng-show="vm.userDashboard.userLogin">
+            <label data-translate="jhipsterElasticsearchSampleApplicationApp.userDashboard.user" for="field_user">User</label>
+            <input class="form-control" id="field_user" name="user" ng-model="vm.userDashboard.userLogin"  readonly >
+            </input>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" data-translate="jhipsterElasticsearchSampleApplicationApp.userDashboard.phone" for="field_phone">Phone</label>
+            <input type="text" class="form-control" name="phone" id="field_phone"
+                   ng-model="vm.userDashboard.phone"
+            />
+        </div>
+        <div class="form-group">
+            <label data-translate="jhipsterElasticsearchSampleApplicationApp.userDashboard.comp" for="field_comp">Comp</label>
+            <select selectpicker class="selectpicker form-control" id="field_comp" multiple name="comp" ng-model="vm.userDashboard.comps" ng-options="competence as competence.name for competence in vm.competences track by competence.id" >
+                <option >name</option>
+
+            </select>
+            <script src="/bower_components/angular-bootstrap-select/src/angular-bootstrap-select.js"></script>
+            <script>
+                // Initialize Boostrap-select
+                $('.selectpicker').selectpicker();
+            </script>
+        </div>
+        <div class="form-group">
+            <label data-translate="jhipsterElasticsearchSampleApplicationApp.userDashboard.comp">Comp2</label>
+            <select class="selectpicker form-control" >
+                <option>nor1</option>
+                <option>nor2</option>
+            </select>
+
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
+

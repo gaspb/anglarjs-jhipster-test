@@ -1,0 +1,120 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myProjectLabel" data-translate="jhipsterElasticsearchSampleApplicationApp.project.home.createOrEditLabel">Create or edit a Project</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.project.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.project.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="jhipsterElasticsearchSampleApplicationApp.project.title" for="field_title">Title</label>
+            <input type="text" class="form-control" name="title" id="field_title"
+                    ng-model="vm.project.title"
+                    required ng-minlength="10" ng-maxlength="35"/>
+            <div ng-show="editForm.title.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.title.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.title.$error.minlength" data-translate="entity.validation.minlength" translate-value-min="10">
+                    This field is required to be at least 10 characters.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.title.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="35">
+                    This field cannot be longer than 35 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="jhipsterElasticsearchSampleApplicationApp.project.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                    ng-model="vm.project.description"
+                    required ng-minlength="30"/>
+            <div ng-show="editForm.description.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.description.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.description.$error.minlength" data-translate="entity.validation.minlength" translate-value-min="30">
+                    This field is required to be at least 30 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setImage($file, vm.project)">
+            <label class="control-label" data-translate="jhipsterElasticsearchSampleApplicationApp.project.image" for="field_image">Image</label>
+            <div>
+                <div ng-if="vm.project.image" class="help-block clearfix">
+                    <a class="pull-left" ng-click="vm.openFile(vm.project.imageContentType, vm.project.image)" data-translate="entity.action.open">open</a><br>
+                    <span class="pull-left">{{vm.project.imageContentType}}, {{vm.byteSize(vm.project.image)}}</span>
+                    <button type="button" ng-click="vm.project.image=null;vm.project.imageContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setImage($file, vm.project)" data-translate="entity.action.addblob">
+                    Add blob
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="image" id="field_image"
+                    ng-model="vm.project.image"
+                    />
+            <input type="hidden" class="form-control" name="imageContentType" id="field_imageContentType"
+                    ng-model="vm.project.imageContentType" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="jhipsterElasticsearchSampleApplicationApp.project.creationDate" for="field_creationDate">Creation Date</label>
+                <div class="input-group">
+                    <input id="field_creationDate" type="text" class="form-control" name="creationDate" uib-datepicker-popup="{{dateformat}}" ng-model="vm.project.creationDate" is-open="vm.datePickerOpenStatus.creationDate"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('creationDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="jhipsterElasticsearchSampleApplicationApp.project.completionDate" for="field_completionDate">Completion Date</label>
+                <div class="input-group">
+                    <input id="field_completionDate" type="text" class="form-control" name="completionDate" uib-datepicker-popup="{{dateformat}}" ng-model="vm.project.completionDate" is-open="vm.datePickerOpenStatus.completionDate"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('completionDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+
+        <div class="form-group">
+            <label data-translate="jhipsterElasticsearchSampleApplicationApp.project.neededComp" for="field_neededComp">Needed Comp</label>
+            <select class="form-control" id="field_neededComp" multiple name="neededComp" ng-model="vm.project.neededComps" ng-options="competence as competence.name for competence in vm.competences track by competence.id"></select>
+        </div>
+        <div class="form-group">
+            <label data-translate="jhipsterElasticsearchSampleApplicationApp.project.domain" for="field_domain">Domain</label>
+            <select class="form-control" id="field_domain" name="domain" ng-model="vm.project.domainId" ng-options="compDomain.id as compDomain.name for compDomain in vm.compdomains"            >
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="jhipsterElasticsearchSampleApplicationApp.project.author" for="field_author">Author</label>
+            <select class="form-control" id="field_author" name="author" ng-model="vm.project.authorId" ng-options="userDashboard.id as userDashboard.user for userDashboard in vm.userdashboards"            >
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,65 @@
+entity Competence {
+	name String required
+}
+
+entity CompDomain {
+	name String required
+}
+entity UserDashboard{
+phone String
+}
+
+/**
+ * Task entity.
+ * @author The JHipster team.
+ */
+entity Project {
+	title String required minlength(10) maxlength(35),
+	description String required minlength(30),
+    image Blob,
+    creationDate LocalDate,
+    completionDate LocalDate
+}
+entity Suggestion {
+	title String required,
+	description String required,
+    image Blob,
+    creationDate LocalDate
+}
+// enum Language {
+//    FRENCH, ENGLISH, SPANISH
+// }
+relationship OneToOne {
+ UserDashboard{user(login)} to User
+ //User to UserDashboard
+}
+relationship OneToMany {
+	CompDomain to Competence{domain(name)},
+   CompDomain to Project{domain(name)} 
+}
+relationship OneToMany {
+	 UserDashboard{projectList} to Project{author(user)}   
+}
+relationship OneToMany {
+    UserDashboard{suggestionList} to Suggestion{author(user)}
+}
+relationship ManyToMany {
+	Project{neededComp(name)} to Competence,
+    UserDashboard{comp(name)} to Competence
+}
+
+
+
+
+// defining multiple OneToMany relationships with comments
+
+
+// Set pagination options
+paginate Project, Suggestion with infinite-scroll
+paginate Competence, CompDomain with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl 
+

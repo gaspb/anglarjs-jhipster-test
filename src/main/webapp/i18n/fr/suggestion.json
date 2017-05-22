@@ -1,0 +1,26 @@
+{
+    "jhipsterElasticsearchSampleApplicationApp": {
+        "suggestion" : {
+            "home": {
+                "title": "Suggestions",
+                "createLabel": "Créer un nouveau Suggestion",
+                "createOrEditLabel": "Créer ou éditer un Suggestion",
+                "search": "Recherche pour Suggestion"
+            },
+            "created": "Un nouveau Suggestion a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Suggestion avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Suggestion avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Suggestion {{ id }} ?"
+            },
+            "detail": {
+                "title": "Suggestion"
+            },
+            "title": "Title",
+            "description": "Description",
+            "image": "Image",
+            "creationDate": "Creation Date",
+            "author": "Author"
+        }
+    }
+}
