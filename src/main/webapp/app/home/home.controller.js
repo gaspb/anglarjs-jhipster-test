@@ -95,7 +95,7 @@
         vm.openFile = DataUtils.openFile;
         vm.byteSize = DataUtils.byteSize;
 
-        loadAll();
+
 
         function loadAll () {
 
@@ -114,7 +114,7 @@
                 return result;
             }
 
-            function onSuccess(data, headers) {
+            function onSuccess(data) {
                 for (var i = 0; i < data.length; i++) {
                     vm.projects.push(data[i]);
                 }

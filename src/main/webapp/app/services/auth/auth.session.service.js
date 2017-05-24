@@ -36,22 +36,32 @@
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
-            }).success(function (response) {
-                return response;
-            });
+            }).then(function successCallback(data) {
+                return data;
+             }, function errorCallback(response) {
+            console.log(response);
+        });
         }
 
         function logout () {
-
-            
             // logout from the server
-            $http.post('api/logout').success(function (response) {
-                delete $localStorage.authenticationToken;
+           // $http.post('api/logout').success(function (response) {
+            //    delete $localStorage.authenticationToken;
                 // to get a new csrf token call the api
+           //     $http.get('api/account');
+         //       return response;
+         //   });
+            $http({
+                method: 'POST',
+                url: 'api/logout'
+            }).then(function successCallback(data) {
+                delete $localStorage.authenticationToken;
                 $http.get('api/account');
-                return response;
+                return data;
+            }, function errorCallback(response) {
+                console.log(response);
             });
-            
+
         }
     }
 })();
