@@ -52,7 +52,7 @@ public class UserDashboardServiceImpl implements UserDashboardService{
         log.debug("Request to save UserDashboard : {}", userDashboardDTO);
 
         UserDashboard userDashboard = userDashboardMapper.toEntity(userDashboardDTO);
-      //  userDashboard.setUser(userService.getUserWithAuthorities());
+       // userDashboard.setId(userService.getUserWithAuthorities().getId());
        // log.info("-----------test "+userService.getUserWithAuthorities().getId());
         userDashboard = userDashboardRepository.save(userDashboard);
         UserDashboardDTO result = userDashboardMapper.toDto(userDashboard);

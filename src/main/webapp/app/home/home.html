@@ -5,12 +5,12 @@
             <span class="hipster img-responsive img-rounded"></span>
         </div>
         <div class="col-md-8">
-            <h1>Bienvenue sur l'Incubateur Insoumis<span ng-show="vm.isAuthenticated()">, {{vm.account.login}}</span> !</h1>
+            <h1>Bienvenue sur l'Incubateur Insoumis<span ng-if="vm.isAuthenticated()">, {{vm.account.login}}</span> !</h1>
             <p class="lead" data-translate="home.subtitle">This is your homepage</p>
 
             <div ng-switch="vm.isAuthenticated()">
                 <!-- IF USER IS CONNECTED -->
-                <div class="" ng-switch-when="true" has-authority="ROLE_USER" ui-sref-active="active">
+                <div class="navbar-" ng-switch-when="true" has-authority="ROLE_USER" ui-sref-active="active">
                     Vos compétences <br/>
                     Recherchez des projets ! <br/>
                     Recherchez des projets ! <br/>
@@ -27,134 +27,168 @@
                 </div>
 
             </div>
-            <p>
-                <button class="btn btn-primary" type="button" id="start_btn" >
-                    Comment ça marche ??
-                </button>
-            </p>
-
-            <div id="start_main" style="margin: 40px; display: none;">
-                L'incubateur repose sur 3 entités : les projets, les idées et les compétences.<br>
-                 - Chaque utilisateur renseigne ses compétences à l'inscription.<br>
-                 - Lui est alors communiquée la liste des projets et idées nécessitant une ou plusieurs de ces compétences.<br>
-                 - Libre à vous ensuite de participer à ces projets, de lancer les vôtres si vous avez toute ou partie des compétences requises ou de proposer vos idées.
             </div>
-            <p data-translate="home.question">
-                If you have any question on JHipster:
-            </p>
 
-            <ul>
-                <li><a href="https://laec.fr/" target="_blank" data-translate="home.link.laec">LAEC.fr</a></li>
-                <li><a href="https://lafranceinsoumise.fr/" target="_blank" data-translate="home.link.fi">JHipster on Stack Overflow</a></li>
-                <li><a href="//discord.insoumis.online" target="_blank" data-translate="home.link.discord">JHipster bug tracker</a></li>
-                <li><a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" data-translate="home.link.facebook">JHipster public chat room</a></li>
-                <li><a href="//insoumis.online" target="_blank"  data-translate="home.link.online">follow @java_hipster on Twitter</a></li>
-            </ul>
+            </div>
+    <p>
+        <!-- TEST -->
+        <a class="btn btn-primary center-block start-btn" ng-click="vm.collapseThis(2)">
+            Comment ça marche ???????????????
+        </a>
+    </p>
 
+    <div class="start-main" style="margin: 40px;" uib-collapse="isCollapsed[2]">
+        L'incubateur repose sur 3 entités : les projets, les idées et les compétences.<br>
+        - Chaque utilisateur renseigne ses compétences à l'inscription.<br>
+        - Lui est alors communiquée la liste des projets et idées nécessitant une ou plusieurs de ces compétences.<br>
+        - Libre à vous ensuite de participer à ces projets, de lancer les vôtres si vous avez toute ou partie des compétences requises ou de proposer vos idées.
+    </div>
+    <p>
+        <!-- SECTION 1 - CCM -->
+        <a class="btn btn-primary center-block start-btn" id="start_btn" ng-click="vm.collapseThis(1)">
+            Comment ça marche ??
+        </a>
+    </p>
 
+    <div id="start_main" class="start-main" style="margin: 40px;" uib-collapse="isCollapsed[1]">
+        L'incubateur repose sur 3 entités : les projets, les idées et les compétences.<br>
+        - Chaque utilisateur renseigne ses compétences à l'inscription.<br>
+        - Lui est alors communiquée la liste des projets et idées nécessitant une ou plusieurs de ces compétences.<br>
+        - Libre à vous ensuite de participer à ces projets, de lancer les vôtres si vous avez toute ou partie des compétences requises ou de proposer vos idées.
+    </div>
+<div class="panel panel-default">
+    <div class="panel-heading ">
+        <h4 class="panel-title">
+            <a class="center-block" ng-click="vm.collapseThis(0)">
+                Comment ça marche ???
+            </a>
+        </h4>
+    </div>
+    <div uib-collapse="isCollapsed[0]">
+        <div class="panel-body"> L'incubateur repose sur 3 entités : les projets, les idées et les compétences.<br>
+            - Chaque utilisateur renseigne ses compétences à l'inscription.<br>
+            - Lui est alors communiquée la liste des projets et idées nécessitant une ou plusieurs de ces compétences.<br>
+            - Libre à vous ensuite de participer à ces projets, de lancer les vôtres si vous avez toute ou partie des compétences requises ou de proposer vos idées.
         </div>
-        <!-- SECTION 2 - PROJETS -->
+    </div>
+</div>
+    <!-- SECTION 2 - PROJETS -->
 
-            <p>
-                <button class="btn btn-primary center-block" type="button" id="start_pjct" ng-show="vm.isAuthenticated()" >
-                    Découvrir les projets
-                </button>
-
-            </p>
-        <div ng-switch="vm.isAuthenticated()"   >
-            <div id="section2" ng-switch-when="true" style="margin: 40px; display: none;">
-                <h2 data-translate="jhipsterElasticsearchSampleApplicationApp.project.home.title">Projects</h2>
-                <jhi-alert></jhi-alert>
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-xs-6 col-md-4">
-                            <button class="btn btn-primary" ui-sref="project.new" >
-                                <span class="glyphicon glyphicon-plus"></span>
-                            </button>
-                        </div>
-                        <div class="col-xs-6 col-md-4">
-                            <form name="searchForm" class="form-inline">
-                                <div class="input-group pull-right" >
-                                    <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'jhipsterElasticsearchSampleApplicationApp.project.home.search' | translate }}">
-                                    <span  class="input-group-btn width-min" >
+    <div ng-hide="!vm.isAuthenticated()">
+        <button id="start_pjct" class="btn btn-primary center-block start-btn" ng-click="vm.collapseThis(4)" >
+            Découvrir les projets
+        </button>
+    </div>
+    <div ng-switch="vm.isAuthenticated()"   >
+        <div id="section2" ng-switch-when="true" style="margin: 20px;" uib-collapse="isCollapsed[4]">
+            <h2 data-translate="jhipsterElasticsearchSampleApplicationApp.project.home.title">Projects</h2>
+            <jhi-alert></jhi-alert>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-6 col-md-4">
+                        <button class="btn btn-primary" ui-sref="project.new" >
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </div>
+                    <div class="col-xs-6 col-md-4">
+                        <form name="searchForm" class="form-inline">
+                            <div class="input-group pull-right" >
+                                <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'jhipsterElasticsearchSampleApplicationApp.project.home.search' | translate }}">
+                                <span  class="input-group-btn width-min" >
                             <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
                                 <span class="glyphicon glyphicon-search"></span>
                             </button>
                         </span>
-                                    <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                                <span class="input-group-btn width-min" ng-if="vm.currentSearch">
                             <button class="btn btn-info" ng-click="vm.clear()">
                                 <span class="glyphicon glyphicon-trash"></span>
                             </button>
                         </span>
-                                </div>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <br/>
-                <div class="table-responsive">
-                    <table class="jh-table table table-striped">
-                        <thead>
-                        <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
-                            <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
-                            <th jh-sort-by="title"><span data-translate="jhipsterElasticsearchSampleApplicationApp.project.title">Title</span> <span class="glyphicon glyphicon-sort"></span></th>
-                            <th jh-sort-by="description"><span data-translate="jhipsterElasticsearchSampleApplicationApp.project.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
-                            <th jh-sort-by="image"><span data-translate="jhipsterElasticsearchSampleApplicationApp.project.image">Image</span> <span class="glyphicon glyphicon-sort"></span></th>
-                            <th jh-sort-by="creationDate"><span data-translate="jhipsterElasticsearchSampleApplicationApp.project.creationDate">Creation Date</span> <span class="glyphicon glyphicon-sort"></span></th>
-                            <th jh-sort-by="completionDate"><span data-translate="jhipsterElasticsearchSampleApplicationApp.project.completionDate">Completion Date</span> <span class="glyphicon glyphicon-sort"></span></th>
-                            <th jh-sort-by="domainName"><span data-translate="jhipsterElasticsearchSampleApplicationApp.project.domain">Domain</span> <span class="glyphicon glyphicon-sort"></span></th>
-                            <th jh-sort-by="authorUser"><span data-translate="jhipsterElasticsearchSampleApplicationApp.project.author">Author</span> <span class="glyphicon glyphicon-sort"></span></th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        <tbody >
-                        <tr ng-repeat="project in vm.projects track by project.id">
-                            <td><a ui-sref="project-detail({id:project.id})">{{project.id}}</a></td>
-                            <td>{{project.title}}</td>
-                            <td>{{project.description}}</td>
-                            <td>
-                                <a ng-if="project.image" ng-click="vm.openFile(project.imageContentType, project.image)" data-translate="entity.action.open">open</a>
-                                <span ng-if="project.image">{{project.imageContentType}}, {{vm.byteSize(project.image)}}</span>
-                            </td>
-                            <td>{{project.creationDate | date:'mediumDate'}}</td>
-                            <td>{{project.completionDate | date:'mediumDate'}}</td>
-                            <td>
-                                <a ui-sref="comp-domain-detail({id:project.domainId})">{{project.domainName}}</a>
-                            </td>
-                            <td>
-                                <a ui-sref="user-dashboard-detail({id:project.authorId})">{{project.authorUser}}</a>
-                            </td>
-                            <td class="text-right">
-                                <div class="btn-group flex-btn-group-container">
-                                    <button type="submit"
-                                            ui-sref="project-detail({id:project.id})"
-                                            class="btn btn-info btn-sm">
-                                        <span class="glyphicon glyphicon-eye-open"></span>
-                                        <span class="hidden-sm-down" data-translate="entity.action.view"></span>
-                                    </button>
-                                    <button type="submit"
-                                            ui-sref="project.edit({id:project.id})"
-                                            class="btn btn-primary btn-sm">
-                                        <span class="glyphicon glyphicon-pencil"></span>
-                                        <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
-                                    </button>
-                                    <button type="submit"
-                                            ui-sref="project.delete({id:project.id})"
-                                            class="btn btn-danger btn-sm">
-                                        <span class="glyphicon glyphicon-remove-circle"></span>
-                                        <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
+            </div>
+            <br/>
+            <div class="table-responsive">
+                <table class="jh-table table table-striped">
+                    <thead>
+                    <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                        <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                        <th jh-sort-by="title"><span data-translate="jhipsterElasticsearchSampleApplicationApp.project.title">Title</span> <span class="glyphicon glyphicon-sort"></span></th>
+                        <th jh-sort-by="description"><span data-translate="jhipsterElasticsearchSampleApplicationApp.project.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
+                        <th jh-sort-by="image"><span data-translate="jhipsterElasticsearchSampleApplicationApp.project.image">Image</span> <span class="glyphicon glyphicon-sort"></span></th>
+                        <th jh-sort-by="creationDate"><span data-translate="jhipsterElasticsearchSampleApplicationApp.project.creationDate">Creation Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                        <th jh-sort-by="completionDate"><span data-translate="jhipsterElasticsearchSampleApplicationApp.project.completionDate">Completion Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                        <th jh-sort-by="domainName"><span data-translate="jhipsterElasticsearchSampleApplicationApp.project.domain">Domain</span> <span class="glyphicon glyphicon-sort"></span></th>
+                        <th jh-sort-by="authorUser"><span data-translate="jhipsterElasticsearchSampleApplicationApp.project.author">Author</span> <span class="glyphicon glyphicon-sort"></span></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody >
+                    <tr ng-repeat="project in vm.projects track by project.id">
+                        <td><a ui-sref="project-detail({id:project.id})">{{project.id}}</a></td>
+                        <td>{{project.title}}</td>
+                        <td>{{project.description}}</td>
+                        <td>
+                            <a ng-if="project.image" ng-click="vm.openFile(project.imageContentType, project.image)" data-translate="entity.action.open">open</a>
+                            <span ng-if="project.image">{{project.imageContentType}}, {{vm.byteSize(project.image)}}</span>
+                        </td>
+                        <td>{{project.creationDate | date:'mediumDate'}}</td>
+                        <td>{{project.completionDate | date:'mediumDate'}}</td>
+                        <td>
+                            <a ui-sref="comp-domain-detail({id:project.domainId})">{{project.domainName}}</a>
+                        </td>
+                        <td>
+                            <a ui-sref="user-dashboard-detail({id:project.authorId})">{{project.authorUser}}</a>
+                        </td>
+                        <td class="text-right">
+                            <div class="btn-group flex-btn-group-container">
+                                <button type="submit"
+                                        ui-sref="project-detail({id:project.id})"
+                                        class="btn btn-info btn-sm">
+                                    <span class="glyphicon glyphicon-eye-open"></span>
+                                    <span class="hidden-sm-down" data-translate="entity.action.view"></span>
+                                </button>
+                                <button type="submit"
+                                        ui-sref="project.edit({id:project.id})"
+                                        class="btn btn-primary btn-sm">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                    <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
+                                </button>
+                                <button type="submit"
+                                        ui-sref="project.delete({id:project.id})"
+                                        class="btn btn-danger btn-sm">
+                                    <span class="glyphicon glyphicon-remove-circle"></span>
+                                    <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-12 center" style="margin: 20px">
+    <p data-translate="home.question">
+        If you have any question on JHipster:
+    </p>
+
+    <ul >
+        <li><a href="https://laec.fr/" target="_blank" data-translate="home.link.laec">LAEC.fr</a></li>
+        <li><a href="https://lafranceinsoumise.fr/" target="_blank" data-translate="home.link.fi">JHipster on Stack Overflow</a></li>
+        <li><a href="//discord.insoumis.online" target="_blank" data-translate="home.link.discord">JHipster bug tracker</a></li>
+        <li><a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" data-translate="home.link.facebook">JHipster public chat room</a></li>
+        <li><a href="//insoumis.online" target="_blank"  data-translate="home.link.online">follow @java_hipster on Twitter</a></li>
+    </ul>
+        </div>
+    </div>
+
     <p>
-        <span data-translate="home.like">If you like JHipster, don't forget to give us a star on </span>&nbsp;<a href="https://github.com/jhipster/generator-jhipster" target="_blank" data-translate="home.github">Github</a>!
+        <span data-translate="home.like" class="center" style="flex">If you like JHipster, don't forget to give us a star on </span>&nbsp;<a href="https://github.com/jhipster/generator-jhipster" target="_blank" data-translate="home.github">Github</a>!
     </p>
 </div>
 

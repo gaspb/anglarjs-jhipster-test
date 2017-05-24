@@ -109,6 +109,8 @@ public class UserDashboardResourceIntTest {
         int databaseSizeBeforeCreate = userDashboardRepository.findAll().size();
 
         // Create the UserDashboard
+        //test setId
+        userDashboard.setId(Long.parseLong(String.valueOf(Math.floor(Math.random() * 40) + 10)));
         UserDashboardDTO userDashboardDTO = userDashboardMapper.toDto(userDashboard);
         restUserDashboardMockMvc.perform(post("/api/user-dashboards")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)

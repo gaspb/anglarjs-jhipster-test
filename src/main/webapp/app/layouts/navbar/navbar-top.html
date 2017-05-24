@@ -1,0 +1,54 @@
+<div class="menu-wrap section--menu section">
+    <nav class="menu menu--valentine">
+        <div class="icon-list">
+            <ul class="menu__list icon-list">
+                <li class="menu__item menu__item--current"> <a href="#"><i class="fa fa-fw fa-star-o"></i><span>Home</span></a></li>
+                <li class="menu__item"><a class="menu__link" href="#"><i class="fa fa-fw fa-bell-o"></i><span>Mes COmpétences</span></a></li>
+                <li class="menu__item"><a class="menu__link" href="#"><i class="fa fa-fw fa-envelope-o"></i><span>idées</span></a></li>
+                <li class="menu__item"><a class="menu__link" href="#"><i class="fa fa-fw fa-comment-o"></i><span>Projets</span></a></li>
+                <li class="menu__item"><a class="menu__link" href="#"><i class="fa fa-fw fa-bar-chart-o"></i><span>Rechercher</span></a></li>
+
+                <li class="menu__item"><a href="#" class="menu__link"><i class="fa fa-fw fa-newspaper-o"></i><span>Profil</span></a></li>
+                <li class="menu__item"><a href="#" class="menu__link">Se déconnecter</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<button class="menu-button" id="open-button"></button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.6.1/clipboard.min.js"></script>
+<script>
+    (function() {
+        [].slice.call(document.querySelectorAll('.menu')).forEach(function(menu) {
+            var menuItems = menu.querySelectorAll('.menu__link'),
+                setCurrent = function(ev) {
+                    ev.preventDefault();
+
+                    var item = ev.target.parentNode; // li
+
+                    // return if already current
+                    if( item.classList.contains('menu__item--current') ) {
+                        return false;
+                    }
+                    // remove current
+                    menu.querySelector('.menu__item--current').classList.remove('menu__item--current');
+                    // set current
+                    item.classList.add( 'menu__item--current');
+                };
+
+            [].slice.call(menuItems).forEach(function(el) {
+                el.addEventListener('click', setCurrent);
+            });
+        });
+
+        [].slice.call(document.querySelectorAll('.link-copy')).forEach(function(link) {
+            link.setAttribute('data-clipboard-text', location.protocol + '//' + location.host + location.pathname + '#' + link.parentNode.id);
+            new Clipboard(link);
+            link.addEventListener('click', function() {
+                link.classList.add(link, 'link-copy--animate');
+                setTimeout(function() {
+                    link.classList.remove(link, 'link-copy--animate');
+                }, 300);
+            });
+        });
+    })(window);
+</script>

@@ -18,7 +18,11 @@
                 'content@': {
                     templateUrl: 'app/home/home.html',
                     controller: 'HomeController',
-                    controllerAs: 'vm'
+                    controllerAs: 'vm',
+                    require :  {
+                        container: '?^ProjectController'
+                    }
+
                 }
             },
             resolve: {
@@ -28,6 +32,7 @@
                     return $translate.refresh();
                 }]
             }
+
         });
     }
 })();

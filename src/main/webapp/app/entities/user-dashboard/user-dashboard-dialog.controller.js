@@ -29,7 +29,8 @@
         function save () {
             vm.isSaving = true;
 
-            if (vm.userDashboard.id !== null) {
+            if (vm.userDashboard.id !== null  ) {
+               // if (vm.userDashboard.id !==   )
                 UserDashboard.update(vm.userDashboard, onSaveSuccess, onSaveError);
             } else {
                 UserDashboard.save(vm.userDashboard, onSaveSuccess, onSaveError);
