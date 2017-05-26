@@ -18,16 +18,16 @@
                 <!--1 ANONYMOUS NAV -->
                 <div ng-switch-when="false">
                     <div>
-                        <a ui-sref="#" class="nav-item">      
-                           <span>Principes</span>
-                        </a>             
-                        <a ui-sref="#" class="nav-item" >                      
-                          <span>Outils</span>
+                        <a data-menuanchor="firstPage" class="nav-item">
+                           <span>Acceuil</span>
                         </a>
-                        <a ui-sref="#" class="nav-item">
-                            <span>Objectifs</span>
-                        </a>         
-                        <a ui-sref="#" class="nav-item">
+                        <a data-menuanchor="secondPage" class="nav-item" >
+                          <span>Principe</span>
+                        </a>
+                        <a data-menuanchor="3rdPage" class="nav-item">
+                            <span>Outils</span>
+                        </a>
+                        <a  data-menuanchor="4thpage" class="nav-item">
                             <span>A propos</span>
                         </a>
                     </div>
@@ -117,9 +117,9 @@
                                 <span data-translate="global.menu.admin.database">Database</span>
                             </a>
                         </li>
-                    </ul> </span>       
+                    </ul> </span>
                 <!--1 ADMIN ENTITIES TAB -->
-               <span uib-dropdown class="dropdown pointer">  
+               <span uib-dropdown class="dropdown pointer">
                     <a class="dropdown-toggle" uib-dropdown-toggle href="" id="entity-menu"  >
                         <span>
                             <span class="glyphicon glyphicon-th-list"></span>
@@ -186,7 +186,7 @@
                     <span class="text-gray">or</span>
                     <a class="text-bold site-header-link" ui-sref="register">Sign up</a>
                 </div>
-            
+
                 <!--3 END ANONYMOUS SIGNIN/UP -->
                 <!--3 USER ACCOUNT MANAGEMENT -->
                 <div ng-class="{active: vm.$state.includes('account')}" uib-dropdown class="dropdown pointer">
@@ -224,7 +224,7 @@
                                 <span data-translate="global.menu.account.logout">Sign out</span>
                             </a>
                         </li>
-                        
+
                     </ul>
                 </div>
 

@@ -64,7 +64,6 @@
             }
         })
         .state('user-dashboard-detail.edit', {
-            parent: 'user-dashboard-detail',
             url: '/detail/edit',
             data: {
                 authorities: ['ROLE_USER']
@@ -89,7 +88,6 @@
             }]
         })
         .state('user-dashboard.new', {
-            parent: 'user-dashboard',
             url: '/new',
             data: {
                 authorities: ['ROLE_USER']
@@ -117,7 +115,6 @@
             }]
         })
         .state('user-dashboard.edit', {
-            parent: 'user-dashboard',
             url: '/{id}/edit',
             data: {
                 authorities: ['ROLE_USER']
@@ -142,7 +139,6 @@
             }]
         })
         .state('user-dashboard.delete', {
-            parent: 'user-dashboard',
             url: '/{id}/delete',
             data: {
                 authorities: ['ROLE_USER']

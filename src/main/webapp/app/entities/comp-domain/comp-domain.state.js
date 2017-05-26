@@ -84,7 +84,6 @@
             }
         })
         .state('comp-domain-detail.edit', {
-            parent: 'comp-domain-detail',
             url: '/detail/edit',
             data: {
                 authorities: ['ROLE_USER']
@@ -109,7 +108,6 @@
             }]
         })
         .state('comp-domain.new', {
-            parent: 'comp-domain',
             url: '/new',
             data: {
                 authorities: ['ROLE_USER']
@@ -137,7 +135,6 @@
             }]
         })
         .state('comp-domain.edit', {
-            parent: 'comp-domain',
             url: '/{id}/edit',
             data: {
                 authorities: ['ROLE_USER']
@@ -162,7 +159,6 @@
             }]
         })
         .state('comp-domain.delete', {
-            parent: 'comp-domain',
             url: '/{id}/delete',
             data: {
                 authorities: ['ROLE_USER']

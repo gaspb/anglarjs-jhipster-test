@@ -1,17 +1,18 @@
 (function() {
     'use strict';
 
-    angular
-        .module('jhipsterElasticsearchSampleApplicationApp')
-        .controller('NavbarController', NavbarController);
+   var app= angular
+        .module('jhipsterElasticsearchSampleApplicationApp');
+       app .controller('NavbarController', NavbarController);
 
-    NavbarController.$inject = ['$state', 'Auth', 'Principal', 'ProfileService', 'LoginService'];
+    NavbarController.$inject = ['$state', '$rootScope', 'Auth', 'Principal', 'ProfileService', 'LoginService'];
 
-    function NavbarController ($state, Auth, Principal, ProfileService, LoginService) {
+    function NavbarController ($state, $rootScope, Auth, Principal, ProfileService, LoginService) {
         var vm = this;
 
         vm.isNavbarCollapsed = true;
         vm.isAuthenticated = Principal.isAuthenticated;
+
 
         ProfileService.getProfileInfo().then(function(response) {
             vm.inProduction = response.inProduction;
@@ -24,6 +25,7 @@
         vm.collapseNavbar = collapseNavbar;
         vm.$state = $state;
 
+
         function login() {
             collapseNavbar();
             LoginService.open();
@@ -31,8 +33,8 @@
 
         function logout() {
             collapseNavbar();
-            Auth.logout();
-            $state.go('home');
+
+            $state.go('newbie').then(Auth.logout());
         }
 
         function toggleNavbar() {

@@ -64,7 +64,6 @@
             }
         })
         .state('suggestion-detail.edit', {
-            parent: 'suggestion-detail',
             url: '/detail/edit',
             data: {
                 authorities: ['ROLE_USER']
@@ -89,7 +88,6 @@
             }]
         })
         .state('suggestion.new', {
-            parent: 'suggestion',
             url: '/new',
             data: {
                 authorities: ['ROLE_USER']
@@ -121,7 +119,6 @@
             }]
         })
         .state('suggestion.edit', {
-            parent: 'suggestion',
             url: '/{id}/edit',
             data: {
                 authorities: ['ROLE_USER']
@@ -146,7 +143,6 @@
             }]
         })
         .state('suggestion.delete', {
-            parent: 'suggestion',
             url: '/{id}/delete',
             data: {
                 authorities: ['ROLE_USER']

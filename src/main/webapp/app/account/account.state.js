@@ -5,12 +5,13 @@
         .module('jhipsterElasticsearchSampleApplicationApp')
         .config(stateConfig);
 
-    stateConfig.$inject = ['$stateProvider'];
+    stateConfig.$inject = ['$stateProvider', '$qProvider'];
 
-    function stateConfig($stateProvider) {
+    function stateConfig($stateProvider, $qProvider) {
         $stateProvider.state('account', {
             abstract: true,
             parent: 'app'
         });
+        $qProvider.errorOnUnhandledRejections(false);
     }
 })();

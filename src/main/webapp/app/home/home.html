@@ -1,12 +1,12 @@
 <div ng-cloak>
+    <div uib-collapse="isCollapsed[0]">
+    <div class="jumbotron jumbotron-massive">
     <div class="row">
 
-        <div class="col-md-4">
-            <span class="hipster img-responsive img-rounded"></span>
-        </div>
-        <div class="col-md-8">
-            <h1>Bienvenue sur l'Incubateur Insoumis<span ng-if="vm.isAuthenticated()">, {{vm.account.login}}</span> !</h1>
-            <p class="lead" data-translate="home.subtitle">This is your homepage</p>
+
+        <div class="container text-center">
+            <h1>- L'Incubateur Insoumis -</h1>
+            <p class="lead" data-translate="home.subtitle" >This is your homepage</p>
 
             <div ng-switch="vm.isAuthenticated()">
                 <!-- IF USER IS CONNECTED -->
@@ -19,52 +19,24 @@
                 </div>
 
                 <!-- ELSE -->
-                <p class="well center-block" style="max-width:400px" ng-switch-when="false">
+                <p class="well center-block" style="width:80%" ng-switch-when="false">
                     <a href="#" class="btn btn-primary btn-md btn-block" role="button" ui-sref="register"> COMMENCER </a>
                 </p>
-                <div class="alert alert-warning center-block" ng-switch-when="false" data-translate="global.messages.info.authenticated" translate-compile>
-                    Vous avez déjà un compte ? <a class="alert-link" href="" ng-click="vm.login()">Connectez-Vous !</a>
-                </div>
 
             </div>
             </div>
 
             </div>
-    <p>
-        <!-- TEST -->
-        <a class="btn btn-primary center-block start-btn" ng-click="vm.collapseThis(2)">
-            Comment ça marche ???????????????
-        </a>
-    </p>
 
-    <div class="start-main" style="margin: 40px;" uib-collapse="isCollapsed[2]">
-        L'incubateur repose sur 3 entités : les projets, les idées et les compétences.<br>
-        - Chaque utilisateur renseigne ses compétences à l'inscription.<br>
-        - Lui est alors communiquée la liste des projets et idées nécessitant une ou plusieurs de ces compétences.<br>
-        - Libre à vous ensuite de participer à ces projets, de lancer les vôtres si vous avez toute ou partie des compétences requises ou de proposer vos idées.
-    </div>
-    <p>
-        <!-- SECTION 1 - CCM -->
-        <a class="btn btn-primary center-block start-btn" id="start_btn" ng-click="vm.collapseThis(1)">
-            Comment ça marche ??
-        </a>
-    </p>
-
-    <div id="start_main" class="start-main" style="margin: 40px;" uib-collapse="isCollapsed[1]">
-        L'incubateur repose sur 3 entités : les projets, les idées et les compétences.<br>
-        - Chaque utilisateur renseigne ses compétences à l'inscription.<br>
-        - Lui est alors communiquée la liste des projets et idées nécessitant une ou plusieurs de ces compétences.<br>
-        - Libre à vous ensuite de participer à ces projets, de lancer les vôtres si vous avez toute ou partie des compétences requises ou de proposer vos idées.
-    </div>
 <div class="panel panel-default">
     <div class="panel-heading ">
         <h4 class="panel-title">
-            <a class="center-block" ng-click="vm.collapseThis(0)">
+            <a class="center-block" ng-click="collapseThis(5)">
                 Comment ça marche ???
             </a>
         </h4>
     </div>
-    <div uib-collapse="isCollapsed[0]">
+    <div uib-collapse="isCollapsed[5]">
         <div class="panel-body"> L'incubateur repose sur 3 entités : les projets, les idées et les compétences.<br>
             - Chaque utilisateur renseigne ses compétences à l'inscription.<br>
             - Lui est alors communiquée la liste des projets et idées nécessitant une ou plusieurs de ces compétences.<br>
@@ -75,7 +47,7 @@
     <!-- SECTION 2 - PROJETS -->
 
     <div ng-hide="!vm.isAuthenticated()">
-        <button id="start_pjct" class="btn btn-primary center-block start-btn" ng-click="vm.collapseThis(4)" >
+        <button id="start_pjct" class="btn btn-primary center-block start-btn" ng-click="collapseThis(4)" >
             Découvrir les projets
         </button>
     </div>
@@ -171,24 +143,39 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-12 center" style="margin: 20px">
-    <p data-translate="home.question">
-        If you have any question on JHipster:
-    </p>
 
-    <ul >
-        <li><a href="https://laec.fr/" target="_blank" data-translate="home.link.laec">LAEC.fr</a></li>
-        <li><a href="https://lafranceinsoumise.fr/" target="_blank" data-translate="home.link.fi">JHipster on Stack Overflow</a></li>
-        <li><a href="//discord.insoumis.online" target="_blank" data-translate="home.link.discord">JHipster bug tracker</a></li>
-        <li><a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" data-translate="home.link.facebook">JHipster public chat room</a></li>
-        <li><a href="//insoumis.online" target="_blank"  data-translate="home.link.online">follow @java_hipster on Twitter</a></li>
-    </ul>
+    <div class="row">
+        <div class="col-md-12 " style="margin: 20px">
+
+
+
+        </div>
+        <div class="content">
+
+        <div >
+            <button class="btn btn-primary center-block start-btn" ng-click="vm.collapseThis(1)" >
+               Qu'est-ce que c'est ?
+            </button>
         </div>
     </div>
+        </div>
 
-    <p>
-        <span data-translate="home.like" class="center" style="flex">If you like JHipster, don't forget to give us a star on </span>&nbsp;<a href="https://github.com/jhipster/generator-jhipster" target="_blank" data-translate="home.github">Github</a>!
-    </p>
 </div>
+    <div uib-collapse="isCollapsed[1]">
+            <div class="jumbotron jumbotron-massive" ><h1>Principe</h1>
+                <div >
+            <button class="btn btn-primary center-block start-btn" ng-click="vm.collapseThis(2)" >
+                Comment ça marche ?
+            </button>
+        </div></div>
+    </div>
+    <div uib-collapse="isCollapsed[2]">
+        <div class="jumbotron jumbotron-massive" ><h1>Outils</h1>
+
+            <button class="btn btn-primary center-block start-btn" ng-click="vm.collapseThis(0)" >
+                Rejoignez-nous !
+            </button>
+            <div ></div>
+
+    </div>
 

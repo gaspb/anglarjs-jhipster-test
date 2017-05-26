@@ -30,7 +30,6 @@
                 }]
             }
         }).state('elasticsearch-reindex.dialog', {
-            parent: 'elasticsearch-reindex',
             data: {
                 authorities: ['ROLE_ADMIN']
             },

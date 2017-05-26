@@ -22,7 +22,7 @@
         }
 
         function put(name, value) {
-            $cookies.putObject(name, value);
+            $cookies.putObject(name, 'fr');
         }
     }
 })();

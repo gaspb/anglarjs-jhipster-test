@@ -1,0 +1,123 @@
+
+<div full-page options="vm.mainOptions">
+    <div class="section " id="section0">
+        <div class="intro orange">
+        <h1>L'Incubateur Insoumis</h1>
+        <p>Trouvez/proposez des projets militants </p> <br/><br/><br/>
+
+        <br/>
+
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="svg-filters">
+            <defs>
+                <filter id="filter-ripple-1">
+                    <feImage xlink:href="content/images/ripple.png" x="30" y="20" width="0" height="0" result="ripple"></feImage>
+                    <feDisplacementMap xChannelSelector="R" yChannelSelector="G" color-interpolation-filters="sRGB" in="SourceGraphic" in2="ripple" scale="20" result="dm" />
+                    <feComposite operator="in" in2="ripple"></feComposite>
+                    <feComposite in2="SourceGraphic"></feComposite>
+                </filter>
+                <filter id="filter-ripple-2">
+                    <feImage xlink:href="content/images/ripple.png" x="30" y="20" width="0" height="0" result="ripple"></feImage>
+                    <feDisplacementMap xChannelSelector="R" yChannelSelector="G" color-interpolation-filters="sRGB" in="SourceGraphic" in2="ripple" scale="20" result="dm" />
+                    <feComposite operator="in" in2="ripple"></feComposite>
+                    <feComposite in2="SourceGraphic"></feComposite>
+                </filter>
+            </defs>
+        </svg>
+        <div >
+        <button id="button-login" class="button button--8 rip-1" ng-click="vm.timeOutLogin()" ng-mouseenter="vm.rippleMe(0)" ng-mouseleave="vm.rippleMe(0)" rippleme="vm.btnfocus[0]"  ng-class="{'filter-me-1' : !vm.ripple }"> SE CONNECTER </button>
+
+            <button id="component-8" class="button button--8" ng-mouseenter="vm.rippleMe(1)" ng-mouseleave="vm.rippleMe(1)" rippleme="vm.btnfocus[1]" ng-class="{'filter-me-2' : vm.ripple }" ng-click="vm.ripple=true"> S'INSCRIRE </button>
+        </div>
+        <br/><br/>
+        </div>
+        <img class="go down" src="content/images/down-icon-orange.png" alt="Scroll" height="26" width="55" style="left: 50%;">
+
+
+    </div>
+
+    <div class="section" id="section1">
+        <div class="intro white">
+            <h1>Principe</h1>
+            <p>Toutes les compétences sont dans la FI ! Cet Incubateur a pour vocation de les centraliser et de les mettre en lien avec les projets militants qui en expriment le besoin.</p>
+            <p>Si vous vous sentez de lancer et gérer un projet, il vous suffit de renseigner les compétences qui vous manquent pour que les insoumis les possédant soient alertés.</p>
+            <p>La partie Idée est intermédiaire, proposez vos idées ici si vous n'avez pas les compétences ou le temps de gérer le projet vous-même </p>
+            <p>Partagez vos compétences avec la communauté, proposez vos idées et réalisez des projets militants</p>
+            <p></p>
+            <img class="go down hue-me-white" src="content/images/down-icon-orange.png" alt="Scroll" height="26" width="55">
+        </div>
+    </div>
+    <div class="section active" id="section2">
+        <div class="slide">
+            <div class="intro">
+                <h1>Les Outils</h1>
+                <p>Nous mettons à disposition différents outils pour permettre à chacun de gérer ses actions militantes.</p>
+                <p>Cette liste, courte pour l'instant, a pour ambition de se développer et de répondre en temps réel aux besoins d'organisation des militants.</p>
+                <img src="images/slider.png" alt="slider" /> <br/>
+                <button ng-click="vm.addSlide();">Click Me to Add another Slide!</button>
+            </div>
+            <img class="go down hue-me-blue" src="content/images/down-icon-orange.png" alt="Scroll" height="26" width="55">
+        </div>
+
+        <div ng-repeat="slide in vm.slides" class="slide">
+            <div class="intro" ng-click="vm.moog('ddd')" >
+                <img ng-src="{{ slide.src }}" alt="simple" />
+                <h1>{{ slide.title }}</h1>
+                <p>{{ slide.description }}</p>
+                <p>{{ slide.sub }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="section" id="section3">
+        <div class="intro white">
+            <img class="go up hue-me-white" src="content/images/up-icon-orange.png" alt="Scroll" height="26" width="55">
+            <h1>A Propos</h1>
+            <p>
+                Réalisé par un militant insoumis, pensé à l'origine comme un complément au Discord.
+                <br /><br /><br /><br /><br /><br />
+            </p>
+
+        </div>
+        <p class="share-title go">
+            Pour en savoir plus sur la FI et ses actions :
+        </p>
+        <div class="share">
+
+            <button class="share-toggle-button" ng-click="vm.deployMenu()">{{vm.isDeployed}}
+                <i class="share-icon fa fa-share-alt"></i>
+            </button>
+            <ul class="share-items" deployme="vm.isDeployed">
+                <li class="share-item" >
+                    <a href="#" class="share-button">
+                        <i class="share-icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                <li class="share-item" >
+                    <a href="#" class="share-button">
+                        <i class="share-icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                <li class="share-item" >
+                    <a href="#" class="share-button">
+                        <i class="share-icon fa fa-pinterest"></i>
+                    </a>
+                </li>
+                <li class="share-item" >
+                    <a href="#" class="share-button">
+                        <i class="share-icon fa fa-tumblr"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%">
+            <defs>
+                <filter id="goo">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur" />
+                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 35 -15" result="goo" />
+                    <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+                </filter>
+            </defs>
+        </svg>
+         </div>
+
+    </div>
+</div>

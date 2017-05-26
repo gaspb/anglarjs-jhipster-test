@@ -1,7 +1,7 @@
 {
     "home": {
         "title": "Bienvenue sur l'Incubateur Insoumis !",
-        "subtitle": "Ce site permet aux insoumis de mettre leurs compétences au service de la communauté insoumise, de proposer des idées et de lancer des projets avec l'aide des insoumis possédant les compétences qui vous manquent.",
+        "subtitle": "Ce site vous permet de mettre vos compétences au service de la communauté pour la réalisation de projets militants",
         "logged": {
             "message": "Vous êtes connecté en tant que \"{{username}}\"."
         },

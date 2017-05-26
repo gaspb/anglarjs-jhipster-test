@@ -50,7 +50,7 @@ body {
     top: 0;
     bottom: 0;
     margin: auto;
-    position: absolute;
+
     width: 0%;
 }
 
@@ -59,7 +59,6 @@ h1 {
     margin: .5rem 0 1.5rem;
     padding-bottom: .5rem;
     font-size: 3em;
-    border-bottom: .25rem solid #222;
 }
 
 .wrap {

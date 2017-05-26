@@ -64,7 +64,6 @@
             }
         })
         .state('project-detail.edit', {
-            parent: 'project-detail',
             url: '/detail/edit',
             data: {
                 authorities: ['ROLE_USER']
@@ -89,7 +88,6 @@
             }]
         })
         .state('project.new', {
-            parent: 'project',
             url: '/new',
             data: {
                 authorities: ['ROLE_USER']
@@ -122,7 +120,6 @@
             }]
         })
         .state('project.edit', {
-            parent: 'project',
             url: '/{id}/edit',
             data: {
                 authorities: ['ROLE_USER']
@@ -147,7 +144,6 @@
             }]
         })
         .state('project.delete', {
-            parent: 'project',
             url: '/{id}/delete',
             data: {
                 authorities: ['ROLE_USER']

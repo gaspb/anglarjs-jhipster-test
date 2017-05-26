@@ -84,7 +84,6 @@
             }
         })
         .state('competence-detail.edit', {
-            parent: 'competence-detail',
             url: '/detail/edit',
             data: {
                 authorities: ['ROLE_USER']
@@ -109,7 +108,6 @@
             }]
         })
         .state('competence.new', {
-            parent: 'competence',
             url: '/new',
             data: {
                 authorities: ['ROLE_USER']
@@ -137,7 +135,6 @@
             }]
         })
         .state('competence.edit', {
-            parent: 'competence',
             url: '/{id}/edit',
             data: {
                 authorities: ['ROLE_USER']
@@ -162,7 +159,6 @@
             }]
         })
         .state('competence.delete', {
-            parent: 'competence',
             url: '/{id}/delete',
             data: {
                 authorities: ['ROLE_USER']

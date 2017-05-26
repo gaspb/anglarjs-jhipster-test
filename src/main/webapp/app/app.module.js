@@ -16,7 +16,9 @@
             'ui.router',
             'infinite-scroll',
             // jhipster-needle-angularjs-add-module JHipster will add new module here
-            'angular-loading-bar'
+            'angular-loading-bar',
+            'ngAnimate',
+            'fullPage.js'
         ])
         .run(run);
 
@@ -25,7 +27,6 @@
     function run(stateHandler, translationHandler) {
         stateHandler.initialize();
         translationHandler.initialize();
-
     }
     //*******************VELOCITY START
     var $body = $('body');
@@ -44,7 +45,7 @@
         }
     ];
 
-    $.Velocity.RunSequence(loading);
+    $.Velocity.RunSequence(loading, 0.5);
 
 
     //*******************VELOCITY END
