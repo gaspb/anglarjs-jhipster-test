@@ -10,12 +10,92 @@
 
             <div ng-switch="vm.isAuthenticated()">
                 <!-- IF USER IS CONNECTED -->
-                <div class="navbar-" ng-switch-when="true" has-authority="ROLE_USER" ui-sref-active="active">
-                    Vos compétences <br/>
-                    Recherchez des projets ! <br/>
-                    Recherchez des projets ! <br/>
-                    Démarrez un projet ! <br/>
-                    Suggérez une idée !
+                <div ng-switch-when="true" has-authority="ROLE_USER" ui-sref-active="active">
+                    <div class="container-responsive">
+                     <p>Feed</p>
+                        <div style="max-width:300px;">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">Compétences</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Idées</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Projets</a>
+                            </li>
+                         </ul>
+                        <br/>
+                        </div>
+                    </div>
+                    <div class="col-md-6">compétences stream
+                        <div>Carte des compétences</div>
+                    </div>
+                    <div class="col-md-6"> idées stream
+                        <div>Nuage d'idées</div>
+                    </div>
+                    <div class="col-md-12">projets stream
+                        <div class="table-responsive">
+                            <table class="jh-table table table-striped">
+                                <thead>
+                                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                                    <th jh-sort-by="title"><span data-translate="jhipsterElasticsearchSampleApplicationApp.project.title">Title</span> <span class="glyphicon glyphicon-sort"></span></th>
+                                    <th jh-sort-by="description"><span data-translate="jhipsterElasticsearchSampleApplicationApp.project.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
+                                    <th jh-sort-by="image"><span data-translate="jhipsterElasticsearchSampleApplicationApp.project.image">Image</span> <span class="glyphicon glyphicon-sort"></span></th>
+                                    <th jh-sort-by="creationDate"><span data-translate="jhipsterElasticsearchSampleApplicationApp.project.creationDate">Creation Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                                    <th jh-sort-by="completionDate"><span data-translate="jhipsterElasticsearchSampleApplicationApp.project.completionDate">Completion Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                                    <th jh-sort-by="domainName"><span data-translate="jhipsterElasticsearchSampleApplicationApp.project.domain">Domain</span> <span class="glyphicon glyphicon-sort"></span></th>
+                                    <th jh-sort-by="authorUser"><span data-translate="jhipsterElasticsearchSampleApplicationApp.project.author">Author</span> <span class="glyphicon glyphicon-sort"></span></th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody >
+                                <tr ng-repeat="project in vm.projects track by project.id">
+                                    <td><a ui-sref="project-detail({id:project.id})">{{project.id}}</a></td>
+                                    <td>{{project.title}}</td>
+                                    <td>{{project.description}}</td>
+                                    <td>
+                                        <a ng-if="project.image" ng-click="vm.openFile(project.imageContentType, project.image)" data-translate="entity.action.open">open</a>
+                                        <span ng-if="project.image">{{project.imageContentType}}, {{vm.byteSize(project.image)}}</span>
+                                    </td>
+                                    <td>{{project.creationDate | date:'mediumDate'}}</td>
+                                    <td>{{project.completionDate | date:'mediumDate'}}</td>
+                                    <td>
+                                        <a ui-sref="comp-domain-detail({id:project.domainId})">{{project.domainName}}</a>
+                                    </td>
+                                    <td>
+                                        <a ui-sref="user-dashboard-detail({id:project.authorId})">{{project.authorUser}}</a>
+                                    </td>
+                                    <td class="text-right">
+                                        <div class="btn-group flex-btn-group-container">
+                                            <button type="submit"
+                                                    ui-sref="project-detail({id:project.id})"
+                                                    class="btn btn-info btn-sm">
+                                                <span class="glyphicon glyphicon-eye-open"></span>
+                                                <span class="hidden-sm-down" data-translate="entity.action.view"></span>
+                                            </button>
+                                            <button type="submit"
+                                                    ui-sref="project.edit({id:project.id})"
+                                                    class="btn btn-primary btn-sm">
+                                                <span class="glyphicon glyphicon-pencil"></span>
+                                                <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
+                                            </button>
+                                            <button type="submit"
+                                                    ui-sref="project.delete({id:project.id})"
+                                                    class="btn btn-danger btn-sm">
+                                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                                <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div>Panel de projets</div>
+                    </div>
+
                 </div>
 
                 <!-- ELSE -->
@@ -31,7 +111,7 @@
 <div class="panel panel-default">
     <div class="panel-heading ">
         <h4 class="panel-title">
-            <a class="center-block" ng-click="collapseThis(5)">
+            <a class="center-block" ng-click="vm.collapseThis(5)">
                 Comment ça marche ???
             </a>
         </h4>
@@ -47,7 +127,7 @@
     <!-- SECTION 2 - PROJETS -->
 
     <div ng-hide="!vm.isAuthenticated()">
-        <button id="start_pjct" class="btn btn-primary center-block start-btn" ng-click="collapseThis(4)" >
+        <button id="start_pjct" class="btn btn-primary center-block start-btn" ng-click="vm.collapseThis(4)" >
             Découvrir les projets
         </button>
     </div>
@@ -82,64 +162,7 @@
                 </div>
             </div>
             <br/>
-            <div class="table-responsive">
-                <table class="jh-table table table-striped">
-                    <thead>
-                    <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
-                        <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
-                        <th jh-sort-by="title"><span data-translate="jhipsterElasticsearchSampleApplicationApp.project.title">Title</span> <span class="glyphicon glyphicon-sort"></span></th>
-                        <th jh-sort-by="description"><span data-translate="jhipsterElasticsearchSampleApplicationApp.project.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
-                        <th jh-sort-by="image"><span data-translate="jhipsterElasticsearchSampleApplicationApp.project.image">Image</span> <span class="glyphicon glyphicon-sort"></span></th>
-                        <th jh-sort-by="creationDate"><span data-translate="jhipsterElasticsearchSampleApplicationApp.project.creationDate">Creation Date</span> <span class="glyphicon glyphicon-sort"></span></th>
-                        <th jh-sort-by="completionDate"><span data-translate="jhipsterElasticsearchSampleApplicationApp.project.completionDate">Completion Date</span> <span class="glyphicon glyphicon-sort"></span></th>
-                        <th jh-sort-by="domainName"><span data-translate="jhipsterElasticsearchSampleApplicationApp.project.domain">Domain</span> <span class="glyphicon glyphicon-sort"></span></th>
-                        <th jh-sort-by="authorUser"><span data-translate="jhipsterElasticsearchSampleApplicationApp.project.author">Author</span> <span class="glyphicon glyphicon-sort"></span></th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody >
-                    <tr ng-repeat="project in vm.projects track by project.id">
-                        <td><a ui-sref="project-detail({id:project.id})">{{project.id}}</a></td>
-                        <td>{{project.title}}</td>
-                        <td>{{project.description}}</td>
-                        <td>
-                            <a ng-if="project.image" ng-click="vm.openFile(project.imageContentType, project.image)" data-translate="entity.action.open">open</a>
-                            <span ng-if="project.image">{{project.imageContentType}}, {{vm.byteSize(project.image)}}</span>
-                        </td>
-                        <td>{{project.creationDate | date:'mediumDate'}}</td>
-                        <td>{{project.completionDate | date:'mediumDate'}}</td>
-                        <td>
-                            <a ui-sref="comp-domain-detail({id:project.domainId})">{{project.domainName}}</a>
-                        </td>
-                        <td>
-                            <a ui-sref="user-dashboard-detail({id:project.authorId})">{{project.authorUser}}</a>
-                        </td>
-                        <td class="text-right">
-                            <div class="btn-group flex-btn-group-container">
-                                <button type="submit"
-                                        ui-sref="project-detail({id:project.id})"
-                                        class="btn btn-info btn-sm">
-                                    <span class="glyphicon glyphicon-eye-open"></span>
-                                    <span class="hidden-sm-down" data-translate="entity.action.view"></span>
-                                </button>
-                                <button type="submit"
-                                        ui-sref="project.edit({id:project.id})"
-                                        class="btn btn-primary btn-sm">
-                                    <span class="glyphicon glyphicon-pencil"></span>
-                                    <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
-                                </button>
-                                <button type="submit"
-                                        ui-sref="project.delete({id:project.id})"
-                                        class="btn btn-danger btn-sm">
-                                    <span class="glyphicon glyphicon-remove-circle"></span>
-                                    <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+
         </div>
     </div>
 

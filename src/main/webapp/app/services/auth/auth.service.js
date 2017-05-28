@@ -44,16 +44,16 @@
 
             function authThen () {
                 var isAuthenticated = Principal.isAuthenticated();
-
+                alert("AuthService -" + isAuthenticated);
                 // an authenticated user can't access to login and register pages
                 if (isAuthenticated && $rootScope.toState.parent === 'account' && ($rootScope.toState.name === 'login' || $rootScope.toState.name === 'register' || $rootScope.toState.name === 'activate')) {
-                    alert("AuthService1");
+                    alert("AuthService1-cant access this page while logged in");
                     $state.go('home');
                 }
 
                 // recover and clear previousState after external login redirect (e.g. oauth2)
                 if (isAuthenticated && !$rootScope.fromState.name && getPreviousState()) {
-                    alert("AuthService2");
+                    alert("Auth.Service-ExternalLoginRecover");
                     var previousState = getPreviousState();
                     resetPreviousState();
                     $state.go(previousState.name, previousState.params);
@@ -61,22 +61,25 @@
 
                 if ($rootScope.toState.data.authorities && $rootScope.toState.data.authorities.length > 0 && !Principal.hasAnyAuthority($rootScope.toState.data.authorities)) {
                     previousState = getPreviousState();
-                    alert(previousState.name);
+                    alert("AuthService-Denied");
                     if (isAuthenticated) {
                         // user is signed in but not authorized for desired state
                         $state.go('accessdenied');
-                    }
+                    }//else go 404
+
+
                     else {
                         // user is not authenticated. stow the state they wanted before you
                         // send them to the login service, so you can return them when you're done
                         storePreviousState($rootScope.toState.name, $rootScope.toStateParams);
 
                         // now, send them to the signin state so they can log in
-                        $state.go('newbie').then(function() {
+                        $state.go('newbie').then(function () {
                             alert("AuthServiceElse");
                         });
                     }
                 }
+
             }
         }
 

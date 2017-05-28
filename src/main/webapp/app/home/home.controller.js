@@ -18,6 +18,7 @@
         $scope.isCollapsed = [false, true, true, true, true, true, true];
         app.isCollapsed = $scope.isCollapsed;
         vm.pjctIsLoaded = false;
+        vm.collapseThis = collapseThis;
 
 
         //***********
@@ -40,20 +41,21 @@
         }
 
         //**COLLAPSE FUNCTION
-        vm.collapseThis = function (i) {
-            if (i == 4 && !vm.pjctIsLoaded) { // LOAD PROJECTS
+        function collapseThis (i) {
+            alert("homectrl0");
+            if (i === 4 && !vm.pjctIsLoaded) { // LOAD PROJECTS
+                alert("homectrl1");
                 vm.pjctIsLoaded = true;
                 Project.query(function (result) {
                     vm.projects = result;
                 });
             }
-            ;
+
             //collapse all when uncollapsing one
             for (var j = 0; j < $scope.isCollapsed.length; j++) {
-                if (j == i) {
+                if (j === i) {
                     $scope.isCollapsed[j] = !$scope.isCollapsed[j]
-                } else {
-                    $scope.isCollapsed[j] = true;
+
                 }
             }
         }; //**/
