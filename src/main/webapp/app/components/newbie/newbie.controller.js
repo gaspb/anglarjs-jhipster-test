@@ -11,6 +11,7 @@
 
         var vm = this;
         vm.login = login;
+        vm.timeOutRegister = timeOutRegister;
         vm.timeOutLogin = timeOutLogin;
         function login() {
             LoginService.open();
@@ -20,6 +21,13 @@
             vm.ripple=false;
             setTimeout(login,800);
         }
+        function timeOutRegister() {
+            vm.ripple=true;
+            setTimeout(function(){
+                $state.go('register');
+            },800);
+        }
+
         this.mainOptions = {
             sectionsColor: ['#f5f5f5', '#c9462c', 'whitesmoke', '#0098b6', '#ccddff'],
             anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage'],
@@ -101,6 +109,12 @@
                 title: 'Réalisez',
                 description: 'Nous implémenterons bientôt un logiciel de gestion de projet en interne. ',
                 sub:"En attendant, nous vous conseillons une liste d'outils gratuits et autant que possible opensource pour travailler efficacement en équipe, sur le long terme et à distance.",
+                src: ''
+            },
+            {
+                title: 'Partagez',
+                description: 'Formez-vous/formez grâce à notre système de tutorat !',
+                sub:"En attendant le site à venir de l'Université Insoumise, nous proposons à chacun d'être tuteur dans une compétence qu'il maîtrise et d'être aidé dans la compétence qu'il souhaiterait apprendre.",
                 src: ''
             },
             {

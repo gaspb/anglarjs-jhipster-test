@@ -46,18 +46,22 @@
                 var isAuthenticated = Principal.isAuthenticated();
 
                 // an authenticated user can't access to login and register pages
-                if (isAuthenticated && $rootScope.toState.parent === 'account' && ($rootScope.toState.name === 'login' || $rootScope.toState.name === 'register')) {
+                if (isAuthenticated && $rootScope.toState.parent === 'account' && ($rootScope.toState.name === 'login' || $rootScope.toState.name === 'register' || $rootScope.toState.name === 'activate')) {
+                    alert("AuthService1");
                     $state.go('home');
                 }
 
                 // recover and clear previousState after external login redirect (e.g. oauth2)
                 if (isAuthenticated && !$rootScope.fromState.name && getPreviousState()) {
+                    alert("AuthService2");
                     var previousState = getPreviousState();
                     resetPreviousState();
                     $state.go(previousState.name, previousState.params);
                 }
 
                 if ($rootScope.toState.data.authorities && $rootScope.toState.data.authorities.length > 0 && !Principal.hasAnyAuthority($rootScope.toState.data.authorities)) {
+                    previousState = getPreviousState();
+                    alert(previousState.name);
                     if (isAuthenticated) {
                         // user is signed in but not authorized for desired state
                         $state.go('accessdenied');
@@ -69,7 +73,7 @@
 
                         // now, send them to the signin state so they can log in
                         $state.go('newbie').then(function() {
-
+                            alert("AuthServiceElse");
                         });
                     }
                 }

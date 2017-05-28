@@ -7,11 +7,13 @@
     <meta name="description" content="">
     <meta name="google" value="notranslate">
     <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory
+
+     backup <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css">-->
     <!-- build:css content/css/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css">
+
     <link rel="stylesheet" href="bower_components/fullpage.js/jquery.fullPage.css">
 
     <!-- endinject -->
@@ -20,8 +22,9 @@
 
     <link rel="stylesheet" href="content/css/navfixed.css">
     <link rel="stylesheet" href="content/css/share.css">
-    <link rel="stylesheet" href="content/css/main.css">
     <link rel="stylesheet" href="content/css/styles.css">
+    <link rel="stylesheet" href="content/css/main.css">
+
 
     <!-- endbuild -->
     <link rel="shortcut icon" href="favicon.ico" />
@@ -33,15 +36,19 @@
     <![endif]-->
     <page-ribbon></page-ribbon>
     <div ui-view="navbar" ng-cloak></div>
+    <div ng-controller="viewCtrl" >
     <div class="content-wrap">
-        <div ui-view="content">
+        <div ui-view="content" ng-class="{uiregister : uiregister, uinewbie : uinewbie}">
             <!-- Angular views -->
         </div>
-        <div class="footer" ng-cloak>
+    </div>
+        <div class="site-header footer" ng-cloak >
+            <div class="container-responsive">
             <p data-translate="footer">Footer</p>
+            </div>
         </div>
     </div>
-
+</div>
     <!-- Google Analytics: uncomment and change UA-XXXXX-X to be your site's ID.
     <script>
         (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
@@ -188,6 +195,7 @@
     <script src="app/blocks/config/alert.config.js"></script>
     <script src="app/app.state.js"></script>
     <script src="app/app.constants.js"></script>
+    <script src="app/viewsanim.controller.js"></script>
     <script src="app/admin/user-management/user-management-dialog.controller.js"></script>
     <script src="app/admin/user-management/user-management-detail.controller.js"></script>
     <script src="app/admin/user-management/user-management-delete-dialog.controller.js"></script>
@@ -234,6 +242,6 @@
     <script src="app/account/account.state.js"></script>
     <!-- endinject -->
     <!-- endbuild -->
-</div>
+
 </body>
 </html>

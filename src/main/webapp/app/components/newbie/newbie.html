@@ -3,7 +3,9 @@
     <div class="section " id="section0">
         <div class="intro orange">
         <h1>L'Incubateur Insoumis</h1>
-        <p>Trouvez/proposez des projets militants </p> <br/><br/><br/>
+            <br/>
+        <p class="blue hidden">initiatives militantes</p><br/>
+            <p class="dg">Partagez vos compétences avec la communauté, proposez vos idées et réalisez des projets militants</p><br/><br/><br/>
 
         <br/>
 
@@ -26,11 +28,15 @@
         <div >
         <button id="button-login" class="button button--8 rip-1" ng-click="vm.timeOutLogin()" ng-mouseenter="vm.rippleMe(0)" ng-mouseleave="vm.rippleMe(0)" rippleme="vm.btnfocus[0]"  ng-class="{'filter-me-1' : !vm.ripple }"> SE CONNECTER </button>
 
-            <button id="component-8" class="button button--8" ng-mouseenter="vm.rippleMe(1)" ng-mouseleave="vm.rippleMe(1)" rippleme="vm.btnfocus[1]" ng-class="{'filter-me-2' : vm.ripple }" ng-click="vm.ripple=true"> S'INSCRIRE </button>
+            <button id="component-8" class="button button--8" ng-mouseenter="vm.rippleMe(1)" ng-mouseleave="vm.rippleMe(1)" rippleme="vm.btnfocus[1]" ng-class="{'filter-me-2' : vm.ripple }" ng-click="vm.timeOutRegister()"> S'INSCRIRE </button>
         </div>
         <br/><br/>
+            <div class="go down-title">En savoir plus
+
+            </div>
         </div>
-        <img class="go down" src="content/images/down-icon-orange.png" alt="Scroll" height="26" width="55" style="left: 50%;">
+
+        <img class="go down hue-me-orange" src="content/images/down-icon-orange.png" alt="Scroll" height="26" width="55" style="left: 50%;">
 
 
     </div>
@@ -41,7 +47,6 @@
             <p>Toutes les compétences sont dans la FI ! Cet Incubateur a pour vocation de les centraliser et de les mettre en lien avec les projets militants qui en expriment le besoin.</p>
             <p>Si vous vous sentez de lancer et gérer un projet, il vous suffit de renseigner les compétences qui vous manquent pour que les insoumis les possédant soient alertés.</p>
             <p>La partie Idée est intermédiaire, proposez vos idées ici si vous n'avez pas les compétences ou le temps de gérer le projet vous-même </p>
-            <p>Partagez vos compétences avec la communauté, proposez vos idées et réalisez des projets militants</p>
             <p></p>
             <img class="go down hue-me-white" src="content/images/down-icon-orange.png" alt="Scroll" height="26" width="55">
         </div>

@@ -1,7 +1,7 @@
 @CHARSET "ISO-8859-1";
 /* Reset CSS
  * --------------------------------------- */
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,
+dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,
 form,fieldset,input,textarea,p,blockquote,th,td {
     padding: 0;
     margin: 0;
@@ -41,11 +41,7 @@ abbr,acronym { border: 0;
 
 /* Custom CSS
  * --------------------------------------- */
-body{
-	font-family: arial,helvetica;
-	color: #333;
-	color: rgba(0,0,0,0.5);
-}
+
 .wrap{
 	margin-left: auto;
 	margin-right: auto;
@@ -53,10 +49,13 @@ body{
 	position: relative;
 }
 h1{
-	font-size: 6em;
+	font-size: 4em;
+}
+h2{
+    font-size: 3em;
 }
 p{
-	font-size: 2em;
+	font-size: 1.5em;
 }
 .intro p{
 	width: 50%;
@@ -244,8 +243,11 @@ p{
     border-bottom: none;
 }
 .blue {
-    color:#0098b6 !important;
+    color:#13bcf8 !important;
     border-bottom: none;
+}
+.dg {
+    color:darkslategrey;
 }
 .go {
     position: absolute;;
@@ -259,12 +261,23 @@ p{
 .go.down{
     bottom: 13%;
 }
+.go.down-title{
+        bottom: 18%;
+    left: 47%;
+    font-size: 1.5em;
+}
 .go.up{
     top: 5%;
 }
 .hue-me-blue {
-    -webkit-filter : hue-rotate(160deg);
-    filter : hue-rotate(160deg);
+    -webkit-filter : hue-rotate(160deg) ;
+    filter : hue-rotate(160deg );
+    left:8.4%;
+}
+.hue-me-orange {
+    -webkit-filter : hue-rotate(340deg) brightness(85%);
+    filter : hue-rotate(340deg) brightness(85%);
+
 }
 .hue-me-white {
     -webkit-filter : brightness(0%) invert(100%);
@@ -293,18 +306,13 @@ p{
   -webkit-transition: background-color 0.1s ease-out;
   -moz-transition: background-color 0.1s ease-out;
   transition: background-color 0.1s ease-out; }
-  .button--1:hover, .button--1 .button__bg:hover, .button--2:hover, .button--4:hover, .button--4 .button__bg:hover, .button--5:hover, .button--6:hover, .button--7:hover, .button--8:hover, .button--9:hover, .button--10:hover {
-    background-color: #2CD892;
-    color: #fff; }
-  .button--1:focus, .button--1 .button__bg:focus, .button--2:focus, .button--4:focus, .button--4 .button__bg:focus, .button--5:focus, .button--6:focus, .button--7:focus, .button--8:focus, .button--9:focus, .button--10:focus {
-    outline: none;
-    color: #fff; }
+
 
 .safari .button, .safari
 .button__bg {
   -webkit-filter: none !important;
   filter: none !important; }
-.button--8 {
+.button {
     min-width: 235px;
   position: relative;
     margin: 20px 50px;
@@ -315,13 +323,94 @@ p{
   color: #4a4747; }
   .button--8:focus {
     color: #222; }
-  .button--8:hover {
-    background: #F6F6F6;
+  .button:hover {
     border-color: #13bcf8;
     color: #13bcf8; }
   .filter-me-1 {
       filter: url('#filter-ripple-1');
   }
 .filter-me-2 {
-    filter: url('#filter-ripple-2');
+    filter: url("#filter-ripple-2");
 }
+.button--login {
+
+     -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1em;
+  font-weight: 700;
+  text-decoration: none;
+  user-select: none;
+  letter-spacing: 0.1em;
+  padding: 0px 30px;
+  text-transform: uppercase;
+  -webkit-transition: background-color 0.1s ease-out;
+  -moz-transition: background-color 0.1s ease-out;
+  transition: background-color 0.1s ease-out;
+  margin: auto auto 20px auto !important;
+    outline: 0px solid #FFF !important;
+    background: #FFF !important;
+    border: 0px solid #FFF !important;
+    color: #4a4747;
+}
+.button--login:hover {
+    color: #e34829; }
+hr {
+
+     border: 0;
+    height: 1px;
+    width:100%;
+    background: #c9462c radial-gradient(ellipse at center, #e34829 0%, #c9462c 75%);
+}
+/**
+//STATE CHANGE TRANSITION (see viewCtrl in app)
+.uiregister {
+    -webkit-transition: -webkit-transform .7s ease-in;
+    -moz-transition: -moz-transform .7s ease-in;
+    -o-transition: -o-transform .7s ease-in;
+    transition: transform .7s ease-in;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
+
+.uiregister.ng-enter {
+    -webkit-transform: translateX(150%);
+    transform: translateX(15%);
+}
+
+.uiregister.ng-enter.ng-enter-active, .uiregister.ng-leave {
+    position: absolute;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
+
+.uiregister.ng-leave.ng-leave-active {
+    -webkit-transform: translateX(15%);
+    transform: translateX(15%);
+}
+.uinewbie {
+    -webkit-transition: -webkit-transform .7s ease-in;
+    -moz-transition: -moz-transform .7s ease-in;
+    -o-transition: -o-transform .7s ease-in;
+    transition: transform .7s ease-in;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
+
+.uinewbie.ng-enter {
+    -webkit-transform: translateX(150%);
+    transform: translateX(15%);
+}
+
+.uinewbie.ng-enter.ng-enter-active, .uiregister.ng-leave {
+    position: absolute;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
+
+.uinewbie.ng-leave.ng-leave-active {
+    -webkit-transform: translateX(15%);
+    transform: translateX(15%);
+}
+**/
+
